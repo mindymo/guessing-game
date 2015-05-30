@@ -2,6 +2,77 @@
 <html>
 <head>
 	<title>Let's Play 21!</title>
+	<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+	<style>
+		h2, p, h1, h3, button {
+			text-align: center;
+			font-family: 'Abel', sans-serif;
+		}
+		h2 {
+			font-size: 2em;
+		}
+		#container, #button {
+			max-width: 70%;
+			margin: 0 auto;
+			text-align: center;
+		}
+		button {
+			font-size: 1.25em;
+		}
+		button:hover {
+			background-color: #B22222;
+			color: white;
+		}
+		#hand {
+			margin-top: 30px;
+		}
+		.card {
+			width: 30%;
+			border: 1px solid black;
+			float: left;
+			margin: 2% 1.25% 0 1.25%;
+			border-radius: 5%;
+		}
+	</style>
 </head>
-<body></body>
+<body>
+	<div id="container">
+
+		<h2>Welcome, Player!</h2>
+		<p>This is a simple game of 21.</p>
+		<p>To begin, I will give you two cards. You can draw up to four additional cards. If the total value of your cards is between 19 and 21, you win. But if the total face value of your cards exceeds 21, you lose!</p>
+		<p>Card values count upward from Ace (1 point) to Jack, Queen, and King (each 10 points).</p>
+		<h3>Are you ready to play?</h3>
+
+			<div id="button">
+				<button onclick="readyToPlay()">Yes, let's play 21!</button>
+				<script type="text/javascript">
+					function readyToPlay() {
+						alert("Here are your first two cards.");
+					}
+				</script>
+			</div>
+
+			<div id="hand">
+				<div class="card">
+					<h1>Card 1</h1>
+				</div>
+				<div class="card">
+					<h1>Card 2</h1>
+				</div>
+				<div class="card">
+					<h1>Card 3</h1>
+				</div>
+					<div class="card">
+					<h1>Card 4</h1>
+				</div>
+				<div class="card">
+					<h1>Card 5</h1>
+				</div>
+				<div class="card">
+					<h1>Card 6</h1>
+				</div>
+			</div>
+	</div>
+</body>
 </html>
