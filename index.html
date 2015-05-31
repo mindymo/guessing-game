@@ -4,7 +4,7 @@
 	<title>Let's Play 21!</title>
 	<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 	<style>
-		h2, p, h1, h3, #card1, #card2, #card3, button {
+		h2, p, h3, #card1, #card2, #card3, button {
 			text-align: center;
 			font-family: 'Abel', sans-serif;
 		}
@@ -46,16 +46,16 @@
 <body>
 	<div id="container">
 
-		<h2 id="greeting">Welcome, Player!</h2>
+		<h2 id="greeting">Welcome, Player!></h2>
 		<p>This is a simple version of 21.</p>
 		<p>To begin, I will give you two cards. If you wish, you can draw one additional card.</p>
-		<p>If the total value of your cards is between 18 and 21, you win. But if the total face value of your cards is lower than 18 or higher than 21, you lose!</p>
+		<p>If the total value of your cards is between 18 and 21, you win. But if the total value of your cards is lower than 18 or higher than 21, you lose!</p>
 		<p>Card values count upward from Ace (1 point) to Jack, Queen, and King (each 10 points).</p>
 		<h3>Are you ready to play?</h3>
 
 		<button id="ready" type="button">Yes, let's play!</button>
 
-			<div id="hand">
+			<div>
 				<div class="card" id="card1">
 					<p>Card 1</p>
 				</div>
@@ -71,7 +71,7 @@
 
 		var playerName = prompt("Welcome! Please type your name.")
 		var welcome = document.getElementById("greeting");
-		welcome.textContent = "Welcome, " + playerName;
+		welcome.textContent = "Hi there, " + playerName + "!";
 
 		function randomCard() {
 			var randomCard = Math.floor((Math.random() * 13) + 1);
