@@ -4,29 +4,41 @@
 	<title>Let's Play 21!</title>
 	<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 	<style>
-		h2, p, h1, h3, button, #card1 {
+		h2, p, h1, h3, #card1, #card2, #card3, button {
 			text-align: center;
 			font-family: 'Abel', sans-serif;
 		}
+
 		h2 {
 			font-size: 2em;
 		}
-		#container, #button {
-			max-width: 70%;
+
+		button {
+			font-size: 1.1em;
+			margin-bottom: 20px;
+		}
+
+		button:hover {
+			background-color: #c10;
+			color: #fff;
+		}
+
+		#container {
+			max-width: 50%;
 			margin: 0 auto;
 			text-align: center;
+			padding-bottom: 30px;
 		}
-		
-		#hand {
-			margin-top: 30px;
-		}
+
 		.card {
 			width: 30%;
-			height: 150px;
-			border: 1px solid black;
+			height: 120px;
+			border: 1px solid #8B7D7B;
 			float: left;
 			margin: 2% 1.25% 0 1.25%;
+			padding-top: 20px;
 			border-radius: 5%;
+			font-size: 1.5em;
 		}
 		
 	</style>
@@ -34,34 +46,33 @@
 <body>
 	<div id="container">
 
-		<h2>Welcome, Player!</h2>
-		<p>This is a simple game of 21.</p>
-		<p>To begin, I will give you two cards. You can draw up to four additional cards. If the total value of your cards is between 19 and 21, you win. But if the total face value of your cards exceeds 21, you lose!</p>
+		<h2 id="greeting">Welcome, Player!</h2>
+		<p>This is a simple version of 21.</p>
+		<p>To begin, I will give you two cards. If you wish, you can draw one additional card.</p>
+		<p>If the total value of your cards is between 18 and 21, you win. But if the total face value of your cards is lower than 18 or higher than 21, you lose!</p>
 		<p>Card values count upward from Ace (1 point) to Jack, Queen, and King (each 10 points).</p>
 		<h3>Are you ready to play?</h3>
 
+		<button id="ready" type="button">Yes, let's play!</button>
+
 			<div id="hand">
 				<div class="card" id="card1">
-					<h1>Card 1</h1>
+					<p>Card 1</p>
 				</div>
 				<div class="card" id="card2">
-					<h1>Card 2</h1>
+					<p>Card 2</p>
 				</div>
-				<div class="card">
-					<h1>Card 3</h1>
-				</div>
-					<div class="card">
-					<h1>Card 4</h1>
-				</div>
-				<div class="card">
-					<h1>Card 5</h1>
-				</div>
-				<div class="card">
-					<h1>Card 6</h1>
+				<div class="card" id="card3">
+					<p>Card 3</p>
 				</div>
 			</div>
 	</div>
 	<script type="text/javascript">
+
+		var playerName = prompt("Welcome! Please type your name.")
+		var welcome = document.getElementById("greeting");
+		welcome.textContent = "Welcome, " + playerName;
+
 		function randomCard() {
 			var randomCard = Math.floor((Math.random() * 13) + 1);
 			
@@ -84,8 +95,6 @@
 			return randomCard
 			}
 		
-		
-
 		function suit() {
 			var suit = Math.floor((Math.random() * 4) + 1);
 
@@ -101,35 +110,24 @@
 				else if (suit === 4) {
 					suit = "\u2666";
 				}
+
 			return suit
 			}
-
-		var i;
-
-		for (i = 1; i < 3; i++) {
-			console.log(randomCard() + " " + suit());
-		}
-
-		// function deckDraw() {
-		// 	return randomCard + " " + suit;
-		// }
-			
-		// document.getElementById("card1").innerHTML = deckDraw();
-		// document.getElementById("card2").innerHTML = deckDraw();
 		
-		// var nextTurn = prompt("Do you want to HIT or STAY?");
+		document.getElementById("ready").onclick = function() {firstTwoCards()};
 
-		// if ("HIT") {
-		// 	document.getElementById("card2").innerHTML = deckDraw;
-		// }
-		// else {
-		// 	text = "Game over."
-		// }
+		function firstTwoCards() {
+   			document.getElementById("card1").innerHTML = randomCard() + " " + suit();
+			document.getElementById("card2").innerHTML = randomCard() + " " + suit();
+			document.getElementById("card3").innerHTML = '<button id="hit" type="button">HIT</button>';
+			}
 
-		
+		document.getElementById("card3").onclick = function() {
+			nextCard()};
 
-
-
+		function nextCard() {
+   			document.getElementById("card3").innerHTML = randomCard() + " " + suit();
+	   		}
 	</script>
 </body>
 </html>
